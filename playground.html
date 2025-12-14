@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground - Emīl Blūm</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="An interactive drawing playground. Experiment with digital brushes and create something unique.">
+    <meta name="keywords" content="interactive, drawing, playground, creative tools, Emīl Blūm">
+    <meta name="author" content="Emīl Blūm">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emilblum.com/playground.html">
+    <meta property="og:title" content="Playground - Emīl Blūm">
+    <meta property="og:description" content="An interactive drawing playground. Experiment with digital brushes and create something unique.">
+    <meta property="og:image" content="https://emilblum.com/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://emilblum.com/playground.html">
+    <meta name="twitter:title" content="Playground - Emīl Blūm">
+    <meta name="twitter:description" content="An interactive drawing playground. Experiment with digital brushes and create something unique.">
+    <meta name="twitter:image" content="https://emilblum.com/images/social-preview.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- p5.js and p5.brush -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.brush@latest/lib/p5.brush.js"></script>
+
+    <style>
+        #drawing-canvas {
+            cursor: crosshair;
+        }
+        .control-btn {
+            transition: all 0.2s;
+        }
+        .control-btn:hover {
+            transform: translateY(-1px);
+        }
+        .control-btn.active {
+            background-color: #171717 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="selection:bg-neutral-900 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center backdrop-blur-md bg-white/60 border-b border-white/20 transition-all duration-300">
+        <!-- Left Icons -->
+        <div class="flex space-x-6">
+            <a href="index.html" class="nav-icon group relative flex items-center justify-center w-8 h-8 rounded-full hover:bg-neutral-200/50 transition-colors">
+                <iconify-icon icon="lucide:home" width="20" stroke-width="1.5" class="text-neutral-800"></iconify-icon>
+                <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-neutral-900 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                    Home
+                </span>
+            </a>
+            <a href="projects.html" class="nav-icon group relative flex items-center justify-center w-8 h-8 rounded-full hover:bg-neutral-200/50 transition-colors">
+                <iconify-icon icon="lucide:image" width="20" stroke-width="1.5" class="text-neutral-800"></iconify-icon>
+                <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-neutral-900 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                    All Projects
+                </span>
+            </a>
+        </div>
+
+        <!-- Center Wordmark -->
+        <div class="text-lg font-medium tracking-tight text-neutral-900 uppercase">
+            Emīl Blūm
+        </div>
+
+        <!-- Right Icons -->
+        <div class="flex space-x-6">
+            <a href="about.html" class="nav-icon group relative flex items-center justify-center w-8 h-8 rounded-full hover:bg-neutral-200/50 transition-colors">
+                <iconify-icon icon="lucide:info" width="20" stroke-width="1.5" class="text-neutral-800"></iconify-icon>
+                <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-neutral-900 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                    About
+                </span>
+            </a>
+            <a href="contact.html" class="nav-icon group relative flex items-center justify-center w-8 h-8 rounded-full hover:bg-neutral-200/50 transition-colors">
+                <iconify-icon icon="lucide:mail" width="20" stroke-width="1.5" class="text-neutral-800"></iconify-icon>
+                <span class="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-neutral-900 text-white rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+                    Let's Talk
+                </span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-4 md:px-12 max-w-7xl mx-auto">
+
+        <!-- Drawing Playground -->
+        <section class="relative min-h-[800px] border border-dashed border-neutral-300 rounded-lg bg-neutral-100/50 overflow-hidden">
+
+            <!-- Background Text -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
+                <span class="text-[15vw] font-bold tracking-tighter">DRAW</span>
+            </div>
+
+            <!-- Intro Content -->
+            <div class="absolute top-12 left-8 md:left-12 max-w-md z-10 pointer-events-none">
+                <div class="flex items-center gap-4 mb-4">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                    <h2 class="text-xs font-semibold tracking-widest uppercase text-neutral-500">Digital Canvas</h2>
+                </div>
+                <h3 class="text-3xl font-medium tracking-tight mb-4 text-neutral-900">Sketch Something</h3>
+                <p class="text-neutral-600 mb-6 leading-relaxed">
+                    Play with brushes, experiment with colors, and create digital art. No rules, just expression.
+                </p>
+            </div>
+
+            <!-- Controls Panel -->
+            <div class="absolute top-12 right-8 md:right-12 z-20 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg border border-neutral-200 max-w-xs">
+
+                <!-- Brush Type -->
+                <div class="mb-4">
+                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Brush</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="setBrush('marker')" class="control-btn brush-btn active px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
+                            Marker
+                        </button>
+                        <button onclick="setBrush('watercolor')" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
+                            Watercolor
+                        </button>
+                        <button onclick="setBrush('spray')" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
+                            Spray
+                        </button>
+                        <button onclick="setBrush('pen')" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
+                            Pen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Color Palette -->
+                <div class="mb-4">
+                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Color</label>
+                    <div class="grid grid-cols-5 gap-2">
+                        <button onclick="setColor('#000000')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #000000;"></button>
+                        <button onclick="setColor('#EF4444')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EF4444;"></button>
+                        <button onclick="setColor('#3B82F6')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #3B82F6;"></button>
+                        <button onclick="setColor('#10B981')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #10B981;"></button>
+                        <button onclick="setColor('#F59E0B')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #F59E0B;"></button>
+                        <button onclick="setColor('#8B5CF6')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #8B5CF6;"></button>
+                        <button onclick="setColor('#EC4899')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EC4899;"></button>
+                        <button onclick="setColor('#14B8A6')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #14B8A6;"></button>
+                        <button onclick="setColor('#F97316')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #F97316;"></button>
+                        <button onclick="setColor('#6B7280')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #6B7280;"></button>
+                    </div>
+                </div>
+
+                <!-- Brush Size -->
+                <div class="mb-4">
+                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Size</label>
+                    <input type="range" id="brush-size" min="5" max="50" value="20" class="w-full" oninput="setBrushSize(this.value)">
+                    <div class="text-xs text-neutral-400 text-center mt-1"><span id="size-display">20</span>px</div>
+                </div>
+
+                <!-- Actions -->
+                <div class="space-y-2">
+                    <button onclick="clearCanvas()" class="w-full control-btn px-4 py-2 text-xs rounded-md bg-neutral-900 hover:bg-neutral-800 text-white flex items-center justify-center gap-2">
+                        <iconify-icon icon="lucide:trash-2" width="14"></iconify-icon>
+                        Clear Canvas
+                    </button>
+                    <button onclick="saveCanvas()" class="w-full control-btn px-4 py-2 text-xs rounded-md border border-neutral-300 hover:bg-neutral-100 text-neutral-900 flex items-center justify-center gap-2">
+                        <iconify-icon icon="lucide:download" width="14"></iconify-icon>
+                        Save Image
+                    </button>
+                </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div id="canvas-container" class="absolute inset-0 flex items-center justify-center">
+                <!-- p5.js canvas will be inserted here -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative bg-grid-paper pt-12 pb-12">
+        <!-- Torn Paper Effect -->
+        <div class="absolute -top-[10px] left-0 w-full h-[11px] bg-[#F8F7F4] torn-paper-top rotate-180 z-10"></div>
+        <div class="absolute -top-[10px] left-0 w-full h-[11px] bg-neutral-200/50 torn-paper-top rotate-180 z-0 translate-y-[1px]"></div>
+
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+                <div>
+                    <div class="text-sm font-mono text-neutral-400 mb-2">00 — CONTACT</div>
+                    <a href="mailto:emil@emilblum.com" class="text-3xl md:text-5xl font-medium tracking-tight text-neutral-900 hover:text-neutral-500 transition-colors">
+                        emil@emilblum.com
+                    </a>
+                    <div class="mt-8 flex gap-4">
+                        <a href="https://www.linkedin.com/in/emilblum" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:underline">LinkedIn</a>
+                        <a href="https://x.com/emilblum" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:underline">Twitter / X</a>
+                        <a href="https://www.instagram.com/emil_blum/" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:underline">Instagram</a>
+                        <a href="https://www.are.na/emil-b/" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:underline">Are.na</a>
+                        <a href="https://emilblum.substack.com/" target="_blank" rel="noopener noreferrer" class="text-sm text-neutral-600 hover:underline">Substack</a>
+                    </div>
+                </div>
+
+                <div class="text-right">
+                    <p class="text-xs text-neutral-400 max-w-xs ml-auto">
+                        © 2025 Emīl Blūm. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/playground.js"></script>
+</body>
+</html>
