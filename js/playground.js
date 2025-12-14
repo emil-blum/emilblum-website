@@ -1,4 +1,4 @@
-// Playground drawing canvas with Fabric.js - Enhanced Version
+// Playground drawing canvas with Fabric.js - Simplified Version
 let canvas;
 let currentBrush = 'pencil';
 let currentColor = '#000000';
@@ -56,12 +56,12 @@ function updateBrush() {
     let brush;
 
     if (isEraser) {
-        // Eraser mode
+        // Eraser mode - white color to erase
         brush = new fabric.PencilBrush(canvas);
-        brush.color = '#ffffff'; // White to erase
+        brush.color = canvas.backgroundColor || '#ffffff';
         brush.width = currentSize;
     } else {
-        // Regular brush modes
+        // Regular brush modes (only simple ones)
         switch(currentBrush) {
             case 'pencil':
                 brush = new fabric.PencilBrush(canvas);
@@ -71,64 +71,6 @@ function updateBrush() {
                 break;
             case 'spray':
                 brush = new fabric.SprayBrush(canvas);
-                break;
-            case 'hline':
-                brush = new fabric.PatternBrush(canvas);
-                brush.getPatternSrc = function() {
-                    const patternCanvas = document.createElement('canvas');
-                    patternCanvas.width = patternCanvas.height = 10;
-                    const ctx = patternCanvas.getContext('2d');
-                    ctx.strokeStyle = currentColor;
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.moveTo(0, 5);
-                    ctx.lineTo(10, 5);
-                    ctx.stroke();
-                    return patternCanvas;
-                };
-                break;
-            case 'vline':
-                brush = new fabric.PatternBrush(canvas);
-                brush.getPatternSrc = function() {
-                    const patternCanvas = document.createElement('canvas');
-                    patternCanvas.width = patternCanvas.height = 10;
-                    const ctx = patternCanvas.getContext('2d');
-                    ctx.strokeStyle = currentColor;
-                    ctx.lineWidth = 2;
-                    ctx.beginPath();
-                    ctx.moveTo(5, 0);
-                    ctx.lineTo(5, 10);
-                    ctx.stroke();
-                    return patternCanvas;
-                };
-                break;
-            case 'square':
-                brush = new fabric.PatternBrush(canvas);
-                brush.getPatternSrc = function() {
-                    const patternCanvas = document.createElement('canvas');
-                    patternCanvas.width = patternCanvas.height = 10;
-                    const ctx = patternCanvas.getContext('2d');
-                    ctx.fillStyle = currentColor;
-                    ctx.fillRect(0, 0, 5, 5);
-                    return patternCanvas;
-                };
-                break;
-            case 'diamond':
-                brush = new fabric.PatternBrush(canvas);
-                brush.getPatternSrc = function() {
-                    const patternCanvas = document.createElement('canvas');
-                    patternCanvas.width = patternCanvas.height = 10;
-                    const ctx = patternCanvas.getContext('2d');
-                    ctx.fillStyle = currentColor;
-                    ctx.beginPath();
-                    ctx.moveTo(5, 0);
-                    ctx.lineTo(10, 5);
-                    ctx.lineTo(5, 10);
-                    ctx.lineTo(0, 5);
-                    ctx.closePath();
-                    ctx.fill();
-                    return patternCanvas;
-                };
                 break;
             default:
                 brush = new fabric.PencilBrush(canvas);
@@ -232,6 +174,11 @@ function setupControls() {
         brushType.addEventListener('change', function() {
             currentBrush = this.value;
             isEraser = false;
+            // Deactivate eraser button
+            const eraserBtn = document.getElementById('eraser-btn');
+            if (eraserBtn) {
+                eraserBtn.classList.remove('active');
+            }
             updateBrush();
         });
     }
@@ -305,17 +252,43 @@ function setupControls() {
         });
     }
 
-    // Save button
+    // Save button - Export at 1920x1080
     const saveBtn = document.getElementById('save-btn');
     if (saveBtn) {
         saveBtn.addEventListener('click', function() {
-            const dataURL = canvas.toDataURL({
-                format: 'png',
-                quality: 1
-            });
+            // Get current dimensions
+            const originalWidth = canvas.width;
+            const originalHeight = canvas.height;
 
+            // Calculate scale to fit 1920x1080 while maintaining aspect ratio
+            const targetWidth = 1920;
+            const targetHeight = 1080;
+            const scale = Math.min(targetWidth / originalWidth, targetHeight / originalHeight);
+
+            // Create a temporary canvas at target resolution
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = targetWidth;
+            tempCanvas.height = targetHeight;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            // Fill with white background
+            tempCtx.fillStyle = '#ffffff';
+            tempCtx.fillRect(0, 0, targetWidth, targetHeight);
+
+            // Center the scaled drawing
+            const scaledWidth = originalWidth * scale;
+            const scaledHeight = originalHeight * scale;
+            const x = (targetWidth - scaledWidth) / 2;
+            const y = (targetHeight - scaledHeight) / 2;
+
+            // Get the canvas data and draw it scaled
+            const canvasElement = canvas.getElement();
+            tempCtx.drawImage(canvasElement, x, y, scaledWidth, scaledHeight);
+
+            // Convert to data URL and download
+            const dataURL = tempCanvas.toDataURL('png', 1.0);
             const link = document.createElement('a');
-            link.download = 'sketch-' + Date.now() + '.png';
+            link.download = 'sketch-' + Date.now() + '-1920x1080.png';
             link.href = dataURL;
             link.click();
         });
@@ -332,6 +305,12 @@ function setupControls() {
         if ((e.ctrlKey || e.metaKey) && (e.shiftKey && e.key === 'z' || e.key === 'y')) {
             e.preventDefault();
             redo();
+        }
+        // E for eraser toggle
+        if (e.key === 'e' || e.key === 'E') {
+            if (eraserBtn) {
+                eraserBtn.click();
+            }
         }
     });
 }
