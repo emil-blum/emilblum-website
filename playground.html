@@ -115,35 +115,36 @@
 
                     <!-- Brush Type Group -->
                     <div class="flex-shrink-0">
-                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Brush</label>
-                        <div class="flex gap-2">
-                            <button id="brush-pencil" class="control-btn brush-btn active px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
-                                Pencil
-                            </button>
-                            <button id="brush-circle" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
-                                Circle
-                            </button>
-                            <button id="brush-spray" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
-                                Spray
-                            </button>
-                        </div>
+                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Brush Type</label>
+                        <select id="brush-type" class="px-3 py-2 text-xs rounded-md border border-neutral-200 bg-white text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900">
+                            <option value="pencil">Pencil</option>
+                            <option value="circle">Circle Brush</option>
+                            <option value="spray">Spray Paint</option>
+                            <option value="hline">Horizontal Line</option>
+                            <option value="vline">Vertical Line</option>
+                            <option value="square">Square</option>
+                            <option value="diamond">Diamond</option>
+                        </select>
+                    </div>
+
+                    <!-- Eraser -->
+                    <div class="flex-shrink-0">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Tool</label>
+                        <button id="eraser-btn" class="control-btn px-3 py-2 text-xs rounded-md border border-neutral-200 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors flex items-center gap-2">
+                            <iconify-icon icon="lucide:eraser" width="14"></iconify-icon>
+                            Eraser
+                        </button>
                     </div>
 
                     <!-- Divider -->
                     <div class="hidden lg:block w-px h-12 bg-neutral-200"></div>
 
-                    <!-- Color Palette Group -->
+                    <!-- Color Picker Group -->
                     <div class="flex-shrink-0">
                         <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Color</label>
-                        <div class="flex gap-2">
-                            <button data-color="#000000" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #000000;"></button>
-                            <button data-color="#EF4444" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EF4444;"></button>
-                            <button data-color="#3B82F6" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #3B82F6;"></button>
-                            <button data-color="#10B981" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #10B981;"></button>
-                            <button data-color="#F59E0B" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #F59E0B;"></button>
-                            <button data-color="#8B5CF6" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #8B5CF6;"></button>
-                            <button data-color="#EC4899" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EC4899;"></button>
-                            <button data-color="#14B8A6" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #14B8A6;"></button>
+                        <div class="flex items-center gap-2">
+                            <input type="color" id="color-picker" value="#000000" class="w-12 h-10 rounded border border-neutral-200 cursor-pointer">
+                            <span id="color-value" class="text-xs text-neutral-500 font-mono">#000000</span>
                         </div>
                     </div>
 
@@ -153,7 +154,21 @@
                     <!-- Size Group -->
                     <div class="flex-grow max-w-xs">
                         <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Size: <span id="size-display">20</span>px</label>
-                        <input type="range" id="brush-size" min="5" max="50" value="20" class="w-full">
+                        <input type="range" id="brush-size" min="1" max="200" value="20" class="w-full">
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="hidden lg:block w-px h-12 bg-neutral-200"></div>
+
+                    <!-- Background Texture -->
+                    <div class="flex-shrink-0">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Background</label>
+                        <select id="bg-texture" class="px-3 py-2 text-xs rounded-md border border-neutral-200 bg-white text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900">
+                            <option value="white">White</option>
+                            <option value="paper">Paper Texture</option>
+                            <option value="grid">Grid</option>
+                            <option value="dots">Dots</option>
+                        </select>
                     </div>
 
                     <!-- Divider -->
@@ -163,6 +178,12 @@
                     <div class="flex-shrink-0">
                         <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block opacity-0 pointer-events-none">Actions</label>
                         <div class="flex gap-2">
+                            <button id="undo-btn" class="control-btn px-3 py-2 text-xs rounded-md border border-neutral-300 hover:bg-neutral-100 text-neutral-900 transition-colors" title="Undo">
+                                <iconify-icon icon="lucide:undo" width="14"></iconify-icon>
+                            </button>
+                            <button id="redo-btn" class="control-btn px-3 py-2 text-xs rounded-md border border-neutral-300 hover:bg-neutral-100 text-neutral-900 transition-colors" title="Redo">
+                                <iconify-icon icon="lucide:redo" width="14"></iconify-icon>
+                            </button>
                             <button id="clear-btn" class="control-btn px-4 py-2 text-xs rounded-md bg-neutral-900 hover:bg-neutral-800 text-white flex items-center gap-2 transition-colors">
                                 <iconify-icon icon="lucide:trash-2" width="14"></iconify-icon>
                                 Clear
