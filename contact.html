@@ -72,32 +72,33 @@
         </header>
 
         <!-- Form Section -->
-        <form id="contactForm" class="fade-in-up" style="animation-delay: 0.1s;" onsubmit="handleFormSubmit(event)">
+        <form id="contactForm" action="https://formspree.io/f/mblnbjea" method="POST" class="fade-in-up" style="animation-delay: 0.1s;" onsubmit="handleFormSubmit(event)">
             <div class="space-y-12">
 
                 <!-- Personal Info Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <label for="firstname" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">First Name</label>
-                        <input type="text" id="firstname" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Jane">
+                        <input type="text" id="firstname" name="firstname" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Jane">
                     </div>
                     <div class="space-y-2">
                         <label for="lastname" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Last Name</label>
-                        <input type="text" id="lastname" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Doe">
+                        <input type="text" id="lastname" name="lastname" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Doe">
                     </div>
                     <div class="space-y-2">
                         <label for="email" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Email Address</label>
-                        <input type="email" id="email" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="jane@company.com">
+                        <input type="email" id="email" name="email" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="jane@company.com">
                     </div>
                     <div class="space-y-2">
                         <label for="company" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Company</label>
-                        <input type="text" id="company" class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Acme Inc.">
+                        <input type="text" id="company" name="company" class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Acme Inc.">
                     </div>
                 </div>
 
                 <!-- Services (Multi-Select) -->
                 <div class="space-y-4">
                     <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500">How can I help you?</label>
+                    <input type="hidden" name="services" id="services-hidden">
                     <div class="flex flex-wrap gap-3" id="services-options">
                         <button type="button" class="toggle-btn multi-select px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleMulti(this)">Brand Identity Design</button>
                         <button type="button" class="toggle-btn multi-select px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleMulti(this)">Ongoing Graphic Design</button>
@@ -110,12 +111,13 @@
                 <!-- Project Details -->
                 <div class="space-y-2">
                     <label for="details" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Tell me about your project</label>
-                    <textarea id="details" rows="5" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 resize-none" placeholder="Briefly describe the goals, timeline, and scope..."></textarea>
+                    <textarea id="details" name="message" rows="5" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 resize-none" placeholder="Briefly describe the goals, timeline, and scope..."></textarea>
                 </div>
 
                 <!-- Budget (Single Select) -->
                 <div class="space-y-4">
                     <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Do you already have a budget in mind?</label>
+                    <input type="hidden" name="budget" id="budget-hidden">
                     <div class="flex flex-wrap gap-3" id="budget-options">
                         <button type="button" class="toggle-btn budget-opt px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleSingle(this, 'budget-opt')">I don't</button>
                         <button type="button" class="toggle-btn budget-opt px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleSingle(this, 'budget-opt')">$5k — 10k</button>
@@ -128,7 +130,7 @@
                 <!-- Referral -->
                 <div class="space-y-2">
                     <label for="referral" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Where did you hear about me?</label>
-                    <input type="text" id="referral" class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="e.g. Awwwards, Twitter, Referral...">
+                    <input type="text" id="referral" name="referral" class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="e.g. Awwwards, Twitter, Referral...">
                 </div>
 
                 <!-- Submit Button -->

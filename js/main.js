@@ -177,20 +177,54 @@ function toggleSingle(btn, groupClass) {
     btn.classList.add('active');
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
     e.preventDefault();
 
-    const btn = e.target.querySelector('button[type="submit"]');
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
     const originalText = btn.innerHTML;
     btn.innerHTML = '<iconify-icon icon="lucide:loader-2" width="16" class="animate-spin"></iconify-icon> Sending...';
+    btn.disabled = true;
 
-    // Simulate network request
-    setTimeout(() => {
-        document.getElementById('successOverlay').classList.add('visible');
+    // Collect selected services
+    const selectedServices = Array.from(document.querySelectorAll('.multi-select.active'))
+        .map(btn => btn.textContent)
+        .join(', ');
+    document.getElementById('services-hidden').value = selectedServices || 'Not specified';
+
+    // Collect selected budget
+    const selectedBudget = document.querySelector('.budget-opt.active');
+    document.getElementById('budget-hidden').value = selectedBudget ? selectedBudget.textContent : 'Not specified';
+
+    try {
+        // Submit to Formspree
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Success - show overlay
+            document.getElementById('successOverlay').classList.add('visible');
+            form.reset();
+            document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        } else {
+            // Error from Formspree
+            const data = await response.json();
+            alert('Oops! There was a problem submitting your form. Please try again or email me directly.');
+            console.error('Formspree error:', data);
+        }
+    } catch (error) {
+        // Network error
+        alert('Oops! There was a problem submitting your form. Please check your connection and try again.');
+        console.error('Submit error:', error);
+    } finally {
         btn.innerHTML = originalText;
-        e.target.reset();
-        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-    }, 1200);
+        btn.disabled = false;
+    }
 }
 
 // ==========================================
