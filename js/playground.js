@@ -2,7 +2,7 @@
 // Global variables for brush state
 let currentBrush = 'marker';
 let currentColor = '#000000';
-let currentSize = 20;
+let currentSize = 1;
 
 // p5.js sketch
 function setup() {
@@ -11,27 +11,37 @@ function setup() {
     const containerWidth = container.offsetWidth;
     const containerHeight = container.offsetHeight;
 
-    // Create canvas that fills the container
-    const canvas = createCanvas(containerWidth, containerHeight);
+    // IMPORTANT: p5.brush REQUIRES WEBGL mode
+    const canvas = createCanvas(containerWidth, containerHeight, WEBGL);
     canvas.parent('canvas-container');
     canvas.id('drawing-canvas');
 
-    // Set background to white
-    background(255);
-
-    // Initialize brush
+    // Load brushes AFTER canvas creation
     brush.load();
-    brush.set(currentBrush, currentColor, 1);
-    brush.scaleBrushes(currentSize / 20); // Default size is 20
+
+    // Set initial brush
+    brush.set(currentBrush, currentColor, currentSize);
 
     // Setup event listeners after p5 setup
     setupControls();
 }
 
 function draw() {
+    // Set white background
+    background(255);
+
+    // WEBGL has (0,0) at center, translate to top-left for standard drawing
+    translate(-width / 2, -height / 2);
+
     // Only draw when mouse is pressed and within canvas
     if (mouseIsPressed && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-        brush.line(pmouseX, pmouseY, mouseX, mouseY);
+        // Convert mouse coordinates for WEBGL
+        const x1 = pmouseX;
+        const y1 = pmouseY;
+        const x2 = mouseX;
+        const y2 = mouseY;
+
+        brush.line(x1, y1, x2, y2);
     }
 }
 
@@ -76,7 +86,9 @@ function setupControls() {
     // Clear button
     const clearBtn = document.getElementById('clear-btn');
     if (clearBtn) {
-        clearBtn.addEventListener('click', clearCanvas);
+        clearBtn.addEventListener('click', function() {
+            background(255);
+        });
     }
 
     // Save button
@@ -89,26 +101,22 @@ function setupControls() {
 // Brush control functions
 function setBrush(brushType) {
     currentBrush = brushType;
-    brush.set(brushType, currentColor, 1);
-    brush.scaleBrushes(currentSize / 20);
+    brush.set(brushType, currentColor, currentSize);
 }
 
 function setColor(color) {
     currentColor = color;
-    brush.set(currentBrush, color, 1);
+    brush.set(currentBrush, color, currentSize);
 }
 
 function setBrushSize(size) {
-    currentSize = parseInt(size);
+    // Convert size from 5-50 range to brush weight (0.5 to 3)
+    currentSize = map(parseInt(size), 5, 50, 0.5, 3);
     const sizeDisplay = document.getElementById('size-display');
     if (sizeDisplay) {
-        sizeDisplay.textContent = currentSize;
+        sizeDisplay.textContent = size;
     }
-    brush.scaleBrushes(currentSize / 20); // Scale relative to default size
-}
-
-function clearCanvas() {
-    background(255);
+    brush.set(currentBrush, currentColor, currentSize);
 }
 
 function saveDrawing() {
