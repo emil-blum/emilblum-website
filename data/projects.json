@@ -1,0 +1,268 @@
+{
+  "projects": [
+    {
+      "id": "monotype",
+      "title": "Mono/Type",
+      "subtitle": "Editorial Design",
+      "category": "Editorial",
+      "year": "2024",
+      "thumbnail": "images/projects/monotype-thumb.jpg",
+      "featured": true,
+      "description": "A typographic exploration into the duality of digital editorial design.",
+      "client": "Mono/Type Magazine",
+      "services": ["Editorial Design", "Typography", "Art Direction"],
+      "images": [
+        "images/projects/monotype-1.jpg",
+        "images/projects/monotype-2.jpg",
+        "images/projects/monotype-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Create a digital magazine that pushes the boundaries of web typography.",
+        "approach": "We developed a modular grid system that adapts to different content types.",
+        "result": "A unique reading experience that garnered industry recognition."
+      }
+    },
+    {
+      "id": "kinetic-energy",
+      "title": "Kinetic Energy",
+      "subtitle": "Brand Identity",
+      "category": "Branding",
+      "year": "2024",
+      "thumbnail": "images/projects/kinetic-thumb.jpg",
+      "featured": true,
+      "description": "Dynamic brand identity for a forward-thinking energy startup.",
+      "client": "Kinetic Energy Co.",
+      "services": ["Brand Strategy", "Visual Identity", "Motion Design"],
+      "images": [
+        "images/projects/kinetic-1.jpg",
+        "images/projects/kinetic-2.jpg",
+        "images/projects/kinetic-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Position a new player in the renewable energy sector.",
+        "approach": "Created a visual system based on energy flow and transformation.",
+        "result": "A distinctive brand that stands out in a crowded market."
+      }
+    },
+    {
+      "id": "void-systems",
+      "title": "Void Systems",
+      "subtitle": "Website Design",
+      "category": "Digital",
+      "year": "2024",
+      "thumbnail": "images/projects/void-thumb.jpg",
+      "featured": true,
+      "description": "Minimalist web experience for a cybersecurity firm.",
+      "client": "Void Systems",
+      "services": ["Web Design", "UI/UX", "Development"],
+      "images": [
+        "images/projects/void-1.jpg",
+        "images/projects/void-2.jpg",
+        "images/projects/void-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Convey security and trust through minimal design.",
+        "approach": "Dark theme with subtle animations and clear information hierarchy.",
+        "result": "40% increase in qualified leads within first quarter."
+      }
+    },
+    {
+      "id": "ritual-coffee",
+      "title": "Ritual Coffee",
+      "subtitle": "Packaging Design",
+      "category": "Packaging",
+      "year": "2023",
+      "thumbnail": "images/projects/ritual-thumb.jpg",
+      "featured": true,
+      "description": "Elegant packaging system for artisanal coffee roasters.",
+      "client": "Ritual Coffee Roasters",
+      "services": ["Packaging Design", "Brand Identity", "Print Design"],
+      "images": [
+        "images/projects/ritual-1.jpg",
+        "images/projects/ritual-2.jpg",
+        "images/projects/ritual-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Create premium packaging that reflects craft and quality.",
+        "approach": "Minimalist design with focus on typography and sustainable materials.",
+        "result": "30% sales increase and multiple design awards."
+      }
+    },
+    {
+      "id": "bloom-festival",
+      "title": "Bloom Festival",
+      "subtitle": "Event Branding",
+      "category": "Branding",
+      "year": "2023",
+      "thumbnail": "images/projects/bloom-thumb.jpg",
+      "featured": false,
+      "description": "Vibrant visual identity for a music and arts festival.",
+      "client": "Bloom Festival",
+      "services": ["Event Branding", "Poster Design", "Merchandise"],
+      "images": [
+        "images/projects/bloom-1.jpg",
+        "images/projects/bloom-2.jpg",
+        "images/projects/bloom-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Stand out in the crowded festival market.",
+        "approach": "Bold color palette and organic shapes inspired by nature.",
+        "result": "Sold-out event with strong social media presence."
+      }
+    },
+    {
+      "id": "neural-labs",
+      "title": "Neural Labs",
+      "subtitle": "Brand Identity",
+      "category": "Branding",
+      "year": "2023",
+      "thumbnail": "images/projects/neural-thumb.jpg",
+      "featured": false,
+      "description": "Modern identity for an AI research laboratory.",
+      "client": "Neural Labs",
+      "services": ["Brand Strategy", "Visual Identity", "Guidelines"],
+      "images": [
+        "images/projects/neural-1.jpg",
+        "images/projects/neural-2.jpg",
+        "images/projects/neural-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Make cutting-edge AI research accessible and human.",
+        "approach": "Clean, technical aesthetic balanced with warmth.",
+        "result": "Increased partnerships and media coverage."
+      }
+    },
+    {
+      "id": "alto-magazine",
+      "title": "Alto Magazine",
+      "subtitle": "Editorial Design",
+      "category": "Editorial",
+      "year": "2023",
+      "thumbnail": "images/projects/alto-thumb.jpg",
+      "featured": false,
+      "description": "Contemporary design for a culture and lifestyle publication.",
+      "client": "Alto Magazine",
+      "services": ["Editorial Design", "Art Direction", "Photography"],
+      "images": [
+        "images/projects/alto-1.jpg",
+        "images/projects/alto-2.jpg",
+        "images/projects/alto-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Refresh a traditional magazine for younger audience.",
+        "approach": "Bold layouts with focus on visual storytelling.",
+        "result": "20% circulation increase among target demographic."
+      }
+    },
+    {
+      "id": "lunar-studios",
+      "title": "Lunar Studios",
+      "subtitle": "Website Design",
+      "category": "Digital",
+      "year": "2022",
+      "thumbnail": "images/projects/lunar-thumb.jpg",
+      "featured": false,
+      "description": "Portfolio website for a motion design studio.",
+      "client": "Lunar Studios",
+      "services": ["Web Design", "Development", "Animation"],
+      "images": [
+        "images/projects/lunar-1.jpg",
+        "images/projects/lunar-2.jpg",
+        "images/projects/lunar-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Showcase motion work in an engaging web format.",
+        "approach": "Video-first design with smooth scroll interactions.",
+        "result": "Featured on Awwwards and CSS Design Awards."
+      }
+    },
+    {
+      "id": "forge-collective",
+      "title": "Forge Collective",
+      "subtitle": "Brand Identity",
+      "category": "Branding",
+      "year": "2022",
+      "thumbnail": "images/projects/forge-thumb.jpg",
+      "featured": false,
+      "description": "Industrial-inspired identity for a creative coworking space.",
+      "client": "Forge Collective",
+      "services": ["Brand Identity", "Environmental Design", "Signage"],
+      "images": [
+        "images/projects/forge-1.jpg",
+        "images/projects/forge-2.jpg",
+        "images/projects/forge-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Create community-focused brand for diverse creatives.",
+        "approach": "Modular system that celebrates individual makers.",
+        "result": "Full occupancy within 3 months of opening."
+      }
+    },
+    {
+      "id": "echo-sound",
+      "title": "Echo Sound",
+      "subtitle": "Product Design",
+      "category": "Product",
+      "year": "2022",
+      "thumbnail": "images/projects/echo-thumb.jpg",
+      "featured": false,
+      "description": "Minimalist interface for a music streaming app.",
+      "client": "Echo Sound",
+      "services": ["UI/UX Design", "Product Strategy", "Prototyping"],
+      "images": [
+        "images/projects/echo-1.jpg",
+        "images/projects/echo-2.jpg",
+        "images/projects/echo-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Simplify complex music discovery features.",
+        "approach": "Focus on intuitive navigation and beautiful album art.",
+        "result": "50% increase in user engagement metrics."
+      }
+    },
+    {
+      "id": "summit-ventures",
+      "title": "Summit Ventures",
+      "subtitle": "Brand Identity",
+      "category": "Branding",
+      "year": "2022",
+      "thumbnail": "images/projects/summit-thumb.jpg",
+      "featured": false,
+      "description": "Professional identity for a venture capital firm.",
+      "client": "Summit Ventures",
+      "services": ["Brand Strategy", "Visual Identity", "Collateral"],
+      "images": [
+        "images/projects/summit-1.jpg",
+        "images/projects/summit-2.jpg",
+        "images/projects/summit-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Appear approachable yet professional to startups.",
+        "approach": "Modern aesthetic with trustworthy color palette.",
+        "result": "Positioned as a top-tier early stage investor."
+      }
+    },
+    {
+      "id": "pulse-fitness",
+      "title": "Pulse Fitness",
+      "subtitle": "App Design",
+      "category": "Digital",
+      "year": "2021",
+      "thumbnail": "images/projects/pulse-thumb.jpg",
+      "featured": false,
+      "description": "Energetic mobile app for personal training.",
+      "client": "Pulse Fitness",
+      "services": ["Mobile Design", "UX Strategy", "Brand Identity"],
+      "images": [
+        "images/projects/pulse-1.jpg",
+        "images/projects/pulse-2.jpg",
+        "images/projects/pulse-3.jpg"
+      ],
+      "caseStudy": {
+        "challenge": "Make fitness tracking motivating and fun.",
+        "approach": "Gamification elements with clear progress visualization.",
+        "result": "100k downloads in first 6 months."
+      }
+    }
+  ]
+}

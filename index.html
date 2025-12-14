@@ -156,83 +156,9 @@
                 <div class="text-xs font-mono text-neutral-400">01 — 04</div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-
-                <!-- Project 1 -->
-                <div class="reveal-up">
-                    <div class="group relative overflow-hidden aspect-video bg-neutral-200 mb-4">
-                        <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" alt="Project 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-neutral-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                            <a href="project.html" class="bg-white text-neutral-900 px-6 py-3 rounded-full text-sm font-medium tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-neutral-100 flex items-center gap-2">
-                                View Project <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-end border-b border-neutral-200 pb-2">
-                        <div>
-                            <h3 class="text-xl font-medium tracking-tight text-neutral-900">Mono/Type</h3>
-                            <p class="text-sm text-neutral-500 mt-1">Editorial Design</p>
-                        </div>
-                        <div class="text-xs font-mono text-neutral-300">01</div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="reveal-up md:mt-24">
-                    <div class="group relative overflow-hidden aspect-video bg-neutral-200 mb-4">
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2000&auto=format&fit=crop" alt="Project 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-neutral-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                            <a href="project.html" class="bg-white text-neutral-900 px-6 py-3 rounded-full text-sm font-medium tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-neutral-100 flex items-center gap-2">
-                                View Project <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-end border-b border-neutral-200 pb-2">
-                        <div>
-                            <h3 class="text-xl font-medium tracking-tight text-neutral-900">Kinetic Soul</h3>
-                            <p class="text-sm text-neutral-500 mt-1">Branding & Motion</p>
-                        </div>
-                        <div class="text-xs font-mono text-neutral-300">02</div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="reveal-up">
-                    <div class="group relative overflow-hidden aspect-video bg-neutral-200 mb-4">
-                        <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2000&auto=format&fit=crop" alt="Project 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-neutral-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                            <a href="project.html" class="bg-white text-neutral-900 px-6 py-3 rounded-full text-sm font-medium tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-neutral-100 flex items-center gap-2">
-                                View Project <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-end border-b border-neutral-200 pb-2">
-                        <div>
-                            <h3 class="text-xl font-medium tracking-tight text-neutral-900">Void</h3>
-                            <p class="text-sm text-neutral-500 mt-1">Web Experience</p>
-                        </div>
-                        <div class="text-xs font-mono text-neutral-300">03</div>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="reveal-up md:mt-24">
-                    <div class="group relative overflow-hidden aspect-video bg-neutral-200 mb-4">
-                        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2000&auto=format&fit=crop" alt="Project 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-neutral-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-                            <a href="project.html" class="bg-white text-neutral-900 px-6 py-3 rounded-full text-sm font-medium tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-neutral-100 flex items-center gap-2">
-                                View Project <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-end border-b border-neutral-200 pb-2">
-                        <div>
-                            <h3 class="text-xl font-medium tracking-tight text-neutral-900">Echoes</h3>
-                            <p class="text-sm text-neutral-500 mt-1">Packaging</p>
-                        </div>
-                        <div class="text-xs font-mono text-neutral-300">04</div>
-                    </div>
-                </div>
+            <!-- Projects loaded dynamically from data/projects.json -->
+            <div id="featured-projects" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+                <!-- Projects will be loaded here by JavaScript -->
             </div>
 
             <!-- Link to All Projects -->

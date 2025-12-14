@@ -325,10 +325,103 @@ function initArchiveGallery() {
 }
 
 // ==========================================
+// PROJECTS - DYNAMIC LOADING FROM JSON
+// ==========================================
+let projectsData = null;
+
+// Load projects from JSON
+async function loadProjectsData() {
+    if (projectsData) return projectsData;
+
+    try {
+        const response = await fetch('data/projects.json');
+        projectsData = await response.json();
+        return projectsData;
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        return null;
+    }
+}
+
+// Create project card HTML
+function createProjectCard(project, index) {
+    return `
+        <div class="reveal-up">
+            <div class="group relative overflow-hidden aspect-video bg-neutral-200 mb-4">
+                <img src="${project.thumbnail}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-neutral-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                    <a href="project.html?id=${project.id}" class="bg-white text-neutral-900 px-6 py-3 rounded-full text-sm font-medium tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-neutral-100 flex items-center gap-2">
+                        View Project <iconify-icon icon="lucide:arrow-right" width="16"></iconify-icon>
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-between items-end border-b border-neutral-200 pb-2">
+                <div>
+                    <h3 class="text-xl font-medium tracking-tight text-neutral-900">${project.title}</h3>
+                    <p class="text-sm text-neutral-500 mt-1">${project.subtitle}</p>
+                </div>
+                <div class="text-xs font-mono text-neutral-300">${String(index + 1).padStart(2, '0')}</div>
+            </div>
+        </div>
+    `;
+}
+
+// Initialize featured projects on home page
+async function initFeaturedProjects() {
+    const container = document.getElementById('featured-projects');
+    if (!container) return;
+
+    const data = await loadProjectsData();
+    if (!data) return;
+
+    const featured = data.projects.filter(p => p.featured).slice(0, 4);
+    container.innerHTML = featured.map((project, index) => createProjectCard(project, index)).join('');
+}
+
+// Initialize all projects on projects page
+async function initAllProjects() {
+    const container = document.getElementById('all-projects');
+    if (!container) return;
+
+    const data = await loadProjectsData();
+    if (!data) return;
+
+    container.innerHTML = data.projects.map((project, index) => createProjectCard(project, index)).join('');
+}
+
+// Initialize single project page
+async function initProjectPage() {
+    const projectContainer = document.getElementById('project-content');
+    if (!projectContainer) return;
+
+    // Get project ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('id');
+
+    if (!projectId) return;
+
+    const data = await loadProjectsData();
+    if (!data) return;
+
+    const project = data.projects.find(p => p.id === projectId);
+    if (!project) return;
+
+    // Update page title
+    document.title = `${project.title} - Emīl Blūm`;
+
+    // You can add more dynamic content loading here
+    // For now, the project.html template will need manual updates per project
+    // But this structure allows for future full dynamic loading
+}
+
+// ==========================================
 // INITIALIZE ON PAGE LOAD
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
     initDraggables();
     initLightbox();
     initArchiveGallery();
+    initFeaturedProjects();
+    initAllProjects();
+    initProjectPage();
 });
