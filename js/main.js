@@ -565,9 +565,6 @@ async function loadDraggables(containerId, jsonFile) {
             container.appendChild(div);
         });
 
-        // Re-initialize draggable functionality for new items
-        initDraggables();
-
     } catch (error) {
         console.error('Error loading draggables:', error);
     }
@@ -586,12 +583,18 @@ async function initAboutDraggables() {
 // ==========================================
 // INITIALIZE ON PAGE LOAD
 // ==========================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     initLightbox();
     initArchiveGallery();
-    initFeaturedProjects();
-    initAllProjects();
-    initProjectPage();
-    initHomeDraggables();
-    initAboutDraggables();
+    await initFeaturedProjects();
+    await initAllProjects();
+    await initProjectPage();
+    await initHomeDraggables();
+    await initAboutDraggables();
+
+    // Initialize draggables after all dynamic content is loaded
+    // This handles both dynamically loaded draggables and static ones (like project page)
+    setTimeout(() => {
+        initDraggables();
+    }, 100);
 });
