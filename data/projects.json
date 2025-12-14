@@ -10,16 +10,64 @@
       "featured": true,
       "description": "A typographic exploration into the duality of digital editorial design.",
       "client": "Mono/Type Magazine",
+      "role": "Art Direction, UI/UX Design",
       "services": ["Editorial Design", "Typography", "Art Direction"],
+      "metrics": {
+        "title": "Key Results",
+        "items": [
+          "↗ 140% Increase in session duration",
+          "↗ Awwwards Site of the Day",
+          "↗ Featured in Design Week"
+        ]
+      },
       "images": [
         "images/projects/monotype-1.jpg",
         "images/projects/monotype-2.jpg",
         "images/projects/monotype-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Create a digital magazine that pushes the boundaries of web typography.",
-        "approach": "We developed a modular grid system that adapts to different content types.",
-        "result": "A unique reading experience that garnered industry recognition."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "content": "Create a digital magazine that pushes the boundaries of web typography while maintaining exceptional readability across all devices."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "content": "Research Findings"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Users prefer scannable, hierarchical content",
+              "Typography must work flawlessly at all screen sizes",
+              "Loading speed critical for engagement"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Our Approach"
+          },
+          {
+            "type": "paragraph",
+            "content": "We developed a modular grid system that adapts to different content types. The design stripped away ornamentation to reveal the structural integrity of pure information architecture."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Results & Impact"
+          },
+          {
+            "type": "paragraph",
+            "content": "The redesigned magazine exceeded all engagement targets and received industry recognition for pushing digital editorial design forward."
+          }
+        ]
       }
     },
     {
@@ -32,16 +80,64 @@
       "featured": true,
       "description": "Dynamic brand identity for a forward-thinking energy startup.",
       "client": "Kinetic Energy Co.",
+      "role": "Brand Strategist, Creative Director",
       "services": ["Brand Strategy", "Visual Identity", "Motion Design"],
+      "metrics": {
+        "title": "Impact",
+        "items": [
+          "↗ 3x increase in brand recognition",
+          "↗ Secured Series A funding",
+          "↗ 50+ media mentions"
+        ]
+      },
       "images": [
         "images/projects/kinetic-1.jpg",
         "images/projects/kinetic-2.jpg",
         "images/projects/kinetic-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Position a new player in the renewable energy sector.",
-        "approach": "Created a visual system based on energy flow and transformation.",
-        "result": "A distinctive brand that stands out in a crowded market."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "content": "Position a new player in the crowded renewable energy sector with a brand that communicates innovation and trustworthiness."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Strategic Approach"
+          },
+          {
+            "type": "paragraph",
+            "content": "Created a visual system based on energy flow and transformation. The identity needed to feel both scientific and approachable."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "content": "Core Principles"
+          },
+          {
+            "type": "numbered-list",
+            "items": [
+              "Energy in motion - dynamic not static",
+              "Transparency builds trust",
+              "Future-forward but grounded"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Outcome"
+          },
+          {
+            "type": "paragraph",
+            "content": "A distinctive brand that stands out in a crowded market and helped secure significant funding."
+          }
+        ]
       }
     },
     {
@@ -54,16 +150,60 @@
       "featured": true,
       "description": "Minimalist web experience for a cybersecurity firm.",
       "client": "Void Systems",
+      "role": "Lead Designer, Developer",
       "services": ["Web Design", "UI/UX", "Development"],
+      "metrics": {
+        "title": "Performance",
+        "items": [
+          "↗ 40% increase in qualified leads",
+          "↗ 92% lighthouse performance score",
+          "↗ 2.1s average page load"
+        ]
+      },
       "images": [
         "images/projects/void-1.jpg",
         "images/projects/void-2.jpg",
         "images/projects/void-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Convey security and trust through minimal design.",
-        "approach": "Dark theme with subtle animations and clear information hierarchy.",
-        "result": "40% increase in qualified leads within first quarter."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Brief"
+          },
+          {
+            "type": "paragraph",
+            "content": "Convey security and trust through minimal design. The website needed to feel sophisticated without overwhelming technical audiences."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Design Solution"
+          },
+          {
+            "type": "paragraph",
+            "content": "Dark theme with subtle animations and clear information hierarchy. Every interaction reinforces the feeling of control and precision."
+          },
+          {
+            "type": "quote",
+            "content": "The new site converts visitors into leads at twice the industry average.",
+            "author": "VP of Marketing, Void Systems"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Technical Implementation"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Custom WebGL shader effects",
+              "Optimized for Core Web Vitals",
+              "Accessible (WCAG 2.1 AA compliant)"
+            ]
+          }
+        ]
       }
     },
     {
@@ -76,16 +216,64 @@
       "featured": true,
       "description": "Elegant packaging system for artisanal coffee roasters.",
       "client": "Ritual Coffee Roasters",
+      "role": "Packaging Designer, Art Director",
       "services": ["Packaging Design", "Brand Identity", "Print Design"],
+      "metrics": {
+        "title": "Business Impact",
+        "items": [
+          "↗ 30% sales increase",
+          "↗ Pentawards Silver Medal",
+          "↗ Shelf presence in 200+ stores"
+        ]
+      },
       "images": [
         "images/projects/ritual-1.jpg",
         "images/projects/ritual-2.jpg",
         "images/projects/ritual-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Create premium packaging that reflects craft and quality.",
-        "approach": "Minimalist design with focus on typography and sustainable materials.",
-        "result": "30% sales increase and multiple design awards."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "content": "Create premium packaging that reflects craft and quality while being sustainable and cost-effective at scale."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Design Philosophy"
+          },
+          {
+            "type": "paragraph",
+            "content": "Minimalist design with focus on typography and sustainable materials. Let the quality of the product shine through."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "content": "Material Selection"
+          },
+          {
+            "type": "list",
+            "items": [
+              "100% recyclable kraft paper",
+              "Soy-based inks",
+              "Compostable inner lining"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Results"
+          },
+          {
+            "type": "paragraph",
+            "content": "Significant sales increase and multiple design awards. The packaging became a key differentiator in a crowded market."
+          }
+        ]
       }
     },
     {
@@ -98,16 +286,51 @@
       "featured": false,
       "description": "Vibrant visual identity for a music and arts festival.",
       "client": "Bloom Festival",
+      "role": "Creative Director, Brand Designer",
       "services": ["Event Branding", "Poster Design", "Merchandise"],
+      "metrics": {
+        "title": "Festival Stats",
+        "items": [
+          "↗ Sold out in 3 days",
+          "↗ 15K+ social media reach",
+          "↗ 500+ merchandise sales"
+        ]
+      },
       "images": [
         "images/projects/bloom-1.jpg",
         "images/projects/bloom-2.jpg",
         "images/projects/bloom-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Stand out in the crowded festival market.",
-        "approach": "Bold color palette and organic shapes inspired by nature.",
-        "result": "Sold-out event with strong social media presence."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Vision"
+          },
+          {
+            "type": "paragraph",
+            "content": "Stand out in the crowded festival market with an identity that celebrates organic growth and creative expression."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Visual Language"
+          },
+          {
+            "type": "paragraph",
+            "content": "Bold color palette and organic shapes inspired by nature's growth patterns. The identity needed to work across print, digital, and environmental applications."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Outcome"
+          },
+          {
+            "type": "paragraph",
+            "content": "Sold-out event with strong social media presence and merchandise sales that exceeded projections."
+          }
+        ]
       }
     },
     {
@@ -120,16 +343,51 @@
       "featured": false,
       "description": "Modern identity for an AI research laboratory.",
       "client": "Neural Labs",
+      "role": "Brand Strategist, Designer",
       "services": ["Brand Strategy", "Visual Identity", "Guidelines"],
+      "metrics": {
+        "title": "Achievements",
+        "items": [
+          "↗ 5 new research partnerships",
+          "↗ Featured in TechCrunch",
+          "↗ Recruited top-tier talent"
+        ]
+      },
       "images": [
         "images/projects/neural-1.jpg",
         "images/projects/neural-2.jpg",
         "images/projects/neural-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Make cutting-edge AI research accessible and human.",
-        "approach": "Clean, technical aesthetic balanced with warmth.",
-        "result": "Increased partnerships and media coverage."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "content": "Make cutting-edge AI research accessible and human. The brand needed to appeal to both technical and non-technical audiences."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Brand Strategy"
+          },
+          {
+            "type": "paragraph",
+            "content": "Clean, technical aesthetic balanced with warmth. We created a visual system that demystifies AI without dumbing it down."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Impact"
+          },
+          {
+            "type": "paragraph",
+            "content": "Increased partnerships and media coverage. The brand helped position Neural Labs as a leader in ethical AI research."
+          }
+        ]
       }
     },
     {
@@ -142,16 +400,51 @@
       "featured": false,
       "description": "Contemporary design for a culture and lifestyle publication.",
       "client": "Alto Magazine",
+      "role": "Art Director, Designer",
       "services": ["Editorial Design", "Art Direction", "Photography"],
+      "metrics": {
+        "title": "Reader Growth",
+        "items": [
+          "↗ 20% circulation increase",
+          "↗ Younger demographic engagement",
+          "↗ 3 design awards"
+        ]
+      },
       "images": [
         "images/projects/alto-1.jpg",
         "images/projects/alto-2.jpg",
         "images/projects/alto-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Refresh a traditional magazine for younger audience.",
-        "approach": "Bold layouts with focus on visual storytelling.",
-        "result": "20% circulation increase among target demographic."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Brief"
+          },
+          {
+            "type": "paragraph",
+            "content": "Refresh a traditional magazine for a younger audience without alienating existing readers."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Design Approach"
+          },
+          {
+            "type": "paragraph",
+            "content": "Bold layouts with focus on visual storytelling. We introduced more white space, stronger typography, and contemporary photography."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Results"
+          },
+          {
+            "type": "paragraph",
+            "content": "Significant circulation increase among target demographic while maintaining loyalty from existing readers."
+          }
+        ]
       }
     },
     {
@@ -164,16 +457,51 @@
       "featured": false,
       "description": "Portfolio website for a motion design studio.",
       "client": "Lunar Studios",
+      "role": "Web Designer, Developer",
       "services": ["Web Design", "Development", "Animation"],
+      "metrics": {
+        "title": "Recognition",
+        "items": [
+          "↗ Awwwards Honorable Mention",
+          "↗ CSS Design Awards Winner",
+          "↗ 60% increase in inquiries"
+        ]
+      },
       "images": [
         "images/projects/lunar-1.jpg",
         "images/projects/lunar-2.jpg",
         "images/projects/lunar-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Showcase motion work in an engaging web format.",
-        "approach": "Video-first design with smooth scroll interactions.",
-        "result": "Featured on Awwwards and CSS Design Awards."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "content": "Showcase motion work in an engaging web format without compromising performance."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Solution"
+          },
+          {
+            "type": "paragraph",
+            "content": "Video-first design with smooth scroll interactions. Every element reinforces the studio's expertise in motion."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Recognition"
+          },
+          {
+            "type": "paragraph",
+            "content": "Featured on Awwwards and CSS Design Awards. The site became a portfolio piece in itself."
+          }
+        ]
       }
     },
     {
@@ -186,16 +514,51 @@
       "featured": false,
       "description": "Industrial-inspired identity for a creative coworking space.",
       "client": "Forge Collective",
+      "role": "Brand Designer, Environmental Designer",
       "services": ["Brand Identity", "Environmental Design", "Signage"],
+      "metrics": {
+        "title": "Business Growth",
+        "items": [
+          "↗ Full occupancy in 3 months",
+          "↗ 40 resident businesses",
+          "↗ Community of 150+ creatives"
+        ]
+      },
       "images": [
         "images/projects/forge-1.jpg",
         "images/projects/forge-2.jpg",
         "images/projects/forge-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Create community-focused brand for diverse creatives.",
-        "approach": "Modular system that celebrates individual makers.",
-        "result": "Full occupancy within 3 months of opening."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Vision"
+          },
+          {
+            "type": "paragraph",
+            "content": "Create a community-focused brand for diverse creatives that celebrates individual makers."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Brand System"
+          },
+          {
+            "type": "paragraph",
+            "content": "Modular system inspired by industrial design. The identity works across signage, digital, and print applications."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Success"
+          },
+          {
+            "type": "paragraph",
+            "content": "Full occupancy within three months of opening. The brand helped attract a diverse community of makers."
+          }
+        ]
       }
     },
     {
@@ -208,16 +571,64 @@
       "featured": false,
       "description": "Minimalist interface for a music streaming app.",
       "client": "Echo Sound",
+      "role": "Lead Product Designer",
       "services": ["UI/UX Design", "Product Strategy", "Prototyping"],
+      "metrics": {
+        "title": "User Metrics",
+        "items": [
+          "↗ 50% increase in engagement",
+          "↗ 4.8 star app store rating",
+          "↗ 30% reduction in churn"
+        ]
+      },
       "images": [
         "images/projects/echo-1.jpg",
         "images/projects/echo-2.jpg",
         "images/projects/echo-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Simplify complex music discovery features.",
-        "approach": "Focus on intuitive navigation and beautiful album art.",
-        "result": "50% increase in user engagement metrics."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "content": "Simplify complex music discovery features without sacrificing functionality."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Design Process"
+          },
+          {
+            "type": "paragraph",
+            "content": "Focus on intuitive navigation and beautiful album art presentation. Every screen was tested with real users."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "content": "Key Features"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Gesture-based navigation",
+              "Personalized recommendations",
+              "Offline-first architecture"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Impact"
+          },
+          {
+            "type": "paragraph",
+            "content": "Significant increase in user engagement and retention. The app became a portfolio piece for minimalist product design."
+          }
+        ]
       }
     },
     {
@@ -230,16 +641,51 @@
       "featured": false,
       "description": "Professional identity for a venture capital firm.",
       "client": "Summit Ventures",
+      "role": "Brand Strategist, Designer",
       "services": ["Brand Strategy", "Visual Identity", "Collateral"],
+      "metrics": {
+        "title": "Portfolio Growth",
+        "items": [
+          "↗ 12 new portfolio companies",
+          "↗ $50M raised",
+          "↗ Positioned as top-tier investor"
+        ]
+      },
       "images": [
         "images/projects/summit-1.jpg",
         "images/projects/summit-2.jpg",
         "images/projects/summit-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Appear approachable yet professional to startups.",
-        "approach": "Modern aesthetic with trustworthy color palette.",
-        "result": "Positioned as a top-tier early stage investor."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Challenge"
+          },
+          {
+            "type": "paragraph",
+            "content": "Appear approachable yet professional to startups while maintaining credibility with institutional investors."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Brand Strategy"
+          },
+          {
+            "type": "paragraph",
+            "content": "Modern aesthetic with trustworthy color palette. The brand needed to work in boardrooms and startup offices alike."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Outcome"
+          },
+          {
+            "type": "paragraph",
+            "content": "Successfully positioned as a top-tier early-stage investor with a strong portfolio of innovative companies."
+          }
+        ]
       }
     },
     {
@@ -252,16 +698,65 @@
       "featured": false,
       "description": "Energetic mobile app for personal training.",
       "client": "Pulse Fitness",
+      "role": "Product Designer, UX Strategist",
       "services": ["Mobile Design", "UX Strategy", "Brand Identity"],
+      "metrics": {
+        "title": "App Performance",
+        "items": [
+          "↗ 100K downloads in 6 months",
+          "↗ 4.7 star rating",
+          "↗ 70% weekly active users"
+        ]
+      },
       "images": [
         "images/projects/pulse-1.jpg",
         "images/projects/pulse-2.jpg",
         "images/projects/pulse-3.jpg"
       ],
       "caseStudy": {
-        "challenge": "Make fitness tracking motivating and fun.",
-        "approach": "Gamification elements with clear progress visualization.",
-        "result": "100k downloads in first 6 months."
+        "sections": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Goal"
+          },
+          {
+            "type": "paragraph",
+            "content": "Make fitness tracking motivating and fun without overwhelming new users."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Design Solution"
+          },
+          {
+            "type": "paragraph",
+            "content": "Gamification elements with clear progress visualization. We made every workout feel like an achievement."
+          },
+          {
+            "type": "heading",
+            "level": 3,
+            "content": "Core Features"
+          },
+          {
+            "type": "numbered-list",
+            "items": [
+              "Daily streaks and challenges",
+              "Progress photos timeline",
+              "Social sharing features",
+              "Personalized workout plans"
+            ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Success"
+          },
+          {
+            "type": "paragraph",
+            "content": "100K downloads in first six months with exceptional retention rates and user satisfaction scores."
+          }
+        ]
       }
     }
   ]

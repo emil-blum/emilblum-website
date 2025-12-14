@@ -389,39 +389,209 @@ async function initAllProjects() {
     container.innerHTML = data.projects.map((project, index) => createProjectCard(project, index)).join('');
 }
 
-// Initialize single project page
+// Initialize single project page - FULLY DYNAMIC
 async function initProjectPage() {
-    const projectContainer = document.getElementById('project-content');
-    if (!projectContainer) return;
+    // Check if we're on project page
+    if (!window.location.pathname.includes('project.html')) return;
 
     // Get project ID from URL
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('id');
 
-    if (!projectId) return;
+    if (!projectId) {
+        // No ID provided, redirect to projects page
+        window.location.href = 'projects.html';
+        return;
+    }
 
     const data = await loadProjectsData();
     if (!data) return;
 
     const project = data.projects.find(p => p.id === projectId);
-    if (!project) return;
 
-    // Update page title
+    if (!project) {
+        // Project not found, redirect to projects page
+        window.location.href = 'projects.html';
+        return;
+    }
+
+    // Update page title and meta tags
     document.title = `${project.title} - Emīl Blūm`;
+    updateMetaTag('name', 'description', project.description);
+    updateMetaTag('property', 'og:title', `${project.title} - Emīl Blūm`);
+    updateMetaTag('property', 'og:description', project.description);
+    updateMetaTag('name', 'twitter:title', `${project.title} - Emīl Blūm`);
+    updateMetaTag('name', 'twitter:description', project.description);
 
-    // You can add more dynamic content loading here
-    // For now, the project.html template will need manual updates per project
-    // But this structure allows for future full dynamic loading
+    // Update project title
+    const titleEl = document.getElementById('project-title');
+    if (titleEl) titleEl.innerHTML = project.title.toUpperCase().replace(' ', '<br>');
+
+    // Update project description
+    const descEl = document.getElementById('project-description');
+    if (descEl) descEl.textContent = project.description;
+
+    // Update sidebar info
+    updateSidebarInfo('project-year', project.year);
+    updateSidebarInfo('project-client', project.client);
+    updateSidebarInfo('project-role', project.role);
+    updateSidebarInfo('project-services', project.services.join(', '));
+
+    // Update metrics section
+    if (project.metrics) {
+        const metricsTitle = document.getElementById('metrics-title');
+        const metricsList = document.getElementById('metrics-list');
+
+        if (metricsTitle) metricsTitle.textContent = project.metrics.title;
+        if (metricsList) {
+            metricsList.innerHTML = project.metrics.items.map(item =>
+                `<span>${item}</span>`
+            ).join('');
+        }
+    }
+
+    // Update case study content with flexible renderer
+    const caseStudyEl = document.getElementById('case-study-content');
+    if (caseStudyEl && project.caseStudy && project.caseStudy.sections) {
+        caseStudyEl.innerHTML = renderCaseStudy(project.caseStudy.sections);
+    }
+
+    // Update gallery images
+    const galleryEl = document.getElementById('project-gallery');
+    if (galleryEl && project.images) {
+        galleryEl.innerHTML = project.images.map(img => `
+            <div class="reveal-up">
+                <div class="w-full aspect-video bg-neutral-200 overflow-hidden rounded-sm cursor-pointer group" onclick="openLightbox(this)">
+                    <img src="${img}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+// Helper function to update meta tags
+function updateMetaTag(attr, attrValue, content) {
+    const tag = document.querySelector(`meta[${attr}="${attrValue}"]`);
+    if (tag) tag.setAttribute('content', content);
+}
+
+// Helper function to update sidebar info
+function updateSidebarInfo(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+}
+
+// Render flexible case study content
+function renderCaseStudy(sections) {
+    return sections.map(section => {
+        switch(section.type) {
+            case 'heading':
+                const level = section.level || 2;
+                const headingClass = level === 1 ? 'text-3xl font-semibold mb-4 text-neutral-900' :
+                                   level === 2 ? 'text-2xl font-semibold mb-4 text-neutral-900 mt-8' :
+                                   'text-lg font-semibold uppercase tracking-wide text-neutral-600 mb-3 mt-6';
+                return `<h${level} class="${headingClass}">${section.content}</h${level}>`;
+
+            case 'paragraph':
+                return `<p class="text-neutral-700 leading-relaxed mb-6">${section.content}</p>`;
+
+            case 'list':
+                const listItems = section.items.map(item =>
+                    `<li class="flex gap-3"><span class="text-neutral-400 mt-1">•</span><span class="flex-1">${item}</span></li>`
+                ).join('');
+                return `<ul class="space-y-2 mb-6 text-neutral-700">${listItems}</ul>`;
+
+            case 'numbered-list':
+                const numberedItems = section.items.map((item, index) =>
+                    `<li class="flex gap-3"><span class="text-neutral-400 font-medium">${index + 1}.</span><span class="flex-1">${item}</span></li>`
+                ).join('');
+                return `<ol class="space-y-2 mb-6 text-neutral-700">${numberedItems}</ol>`;
+
+            case 'quote':
+                const author = section.author ? `<cite class="text-sm text-neutral-500 not-italic">— ${section.author}</cite>` : '';
+                return `<blockquote class="border-l-4 border-neutral-300 pl-6 py-4 my-8 italic text-lg text-neutral-800">${section.content}${author ? '<br>' + author : ''}</blockquote>`;
+
+            default:
+                return '';
+        }
+    }).join('');
+}
+
+// ==========================================
+// DRAGGABLE SECTIONS - DYNAMIC LOADING
+// ==========================================
+
+// Generate random position within safe bounds
+function getRandomPosition(containerWidth, containerHeight, itemWidth) {
+    const margin = 50; // Keep items away from edges
+    const maxX = containerWidth - itemWidth - margin;
+    const maxY = containerHeight - 200 - margin; // Keep away from bottom
+
+    return {
+        left: margin + Math.random() * (maxX - margin),
+        top: margin + Math.random() * (maxY - margin),
+        rotation: -15 + Math.random() * 30 // -15deg to +15deg
+    };
+}
+
+// Load and render draggable items
+async function loadDraggables(containerId, jsonFile) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    try {
+        const response = await fetch(jsonFile);
+        const data = await response.json();
+
+        const containerWidth = container.offsetWidth;
+        const containerHeight = container.offsetHeight;
+
+        data.items.forEach((item, index) => {
+            const itemWidth = parseInt(item.width) || 250;
+            const pos = getRandomPosition(containerWidth, containerHeight, itemWidth);
+
+            const div = document.createElement('div');
+            div.className = 'draggable-item absolute cursor-move select-none transition-shadow duration-300 hover:shadow-2xl group';
+            div.style.width = item.width;
+            div.style.left = `${pos.left}px`;
+            div.style.top = `${pos.top}px`;
+            div.style.transform = `rotate(${pos.rotation}deg)`;
+            div.style.zIndex = 10 + index;
+
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.alt}" class="w-full h-auto shadow-lg border-4 border-white" draggable="false">
+            `;
+
+            container.appendChild(div);
+        });
+
+        // Re-initialize draggable functionality for new items
+        initDraggables();
+
+    } catch (error) {
+        console.error('Error loading draggables:', error);
+    }
+}
+
+// Initialize home page draggables
+async function initHomeDraggables() {
+    await loadDraggables('home-draggables', 'data/home-draggables.json');
+}
+
+// Initialize about page draggables
+async function initAboutDraggables() {
+    await loadDraggables('about-draggables', 'data/about-draggables.json');
 }
 
 // ==========================================
 // INITIALIZE ON PAGE LOAD
 // ==========================================
 document.addEventListener('DOMContentLoaded', function() {
-    initDraggables();
     initLightbox();
     initArchiveGallery();
     initFeaturedProjects();
     initAllProjects();
     initProjectPage();
+    initHomeDraggables();
+    initAboutDraggables();
 });

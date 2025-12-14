@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "image": "images/home/drag-1.jpg",
+      "alt": "Experimental work 1",
+      "width": "280px"
+    },
+    {
+      "image": "images/home/drag-2.jpg",
+      "alt": "Experimental work 2",
+      "width": "240px"
+    },
+    {
+      "image": "images/home/drag-3.jpg",
+      "alt": "Experimental work 3",
+      "width": "260px"
+    },
+    {
+      "image": "images/home/drag-4.jpg",
+      "alt": "Experimental work 4",
+      "width": "220px"
+    },
+    {
+      "image": "images/home/drag-5.jpg",
+      "alt": "Experimental work 5",
+      "width": "300px"
+    }
+  ]
+}
