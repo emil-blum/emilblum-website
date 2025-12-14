@@ -1,65 +1,77 @@
-// Playground drawing canvas with p5.brush
-// Global variables for brush state
-let currentBrush = 'marker';
+// Playground drawing canvas with Fabric.js
+let canvas;
+let currentBrush = 'pencil';
 let currentColor = '#000000';
-let currentSize = 1;
+let currentSize = 20;
 
-// p5.js sketch
-function setup() {
-    // Get the container dimensions
+// Initialize Fabric.js canvas when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initCanvas();
+    setupControls();
+});
+
+function initCanvas() {
+    // Get container dimensions
     const container = document.getElementById('canvas-container');
     const containerWidth = container.offsetWidth;
     const containerHeight = container.offsetHeight;
 
-    // IMPORTANT: p5.brush REQUIRES WEBGL mode
-    const canvas = createCanvas(containerWidth, containerHeight, WEBGL);
-    canvas.parent('canvas-container');
-    canvas.id('drawing-canvas');
-
-    // Load brushes AFTER canvas creation
-    brush.load();
+    // Initialize Fabric canvas
+    canvas = new fabric.Canvas('drawing-canvas', {
+        isDrawingMode: true,
+        width: containerWidth,
+        height: containerHeight,
+        backgroundColor: '#ffffff'
+    });
 
     // Set initial brush
-    brush.set(currentBrush, currentColor, currentSize);
+    updateBrush();
 
-    // Setup event listeners after p5 setup
-    setupControls();
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        const newWidth = container.offsetWidth;
+        const newHeight = container.offsetHeight;
+        canvas.setDimensions({
+            width: newWidth,
+            height: newHeight
+        });
+        canvas.renderAll();
+    });
 }
 
-function draw() {
-    // Set white background
-    background(255);
+function updateBrush() {
+    // Create brush based on current type
+    let brush;
 
-    // WEBGL has (0,0) at center, translate to top-left for standard drawing
-    translate(-width / 2, -height / 2);
-
-    // Only draw when mouse is pressed and within canvas
-    if (mouseIsPressed && mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height) {
-        // Convert mouse coordinates for WEBGL
-        const x1 = pmouseX;
-        const y1 = pmouseY;
-        const x2 = mouseX;
-        const y2 = mouseY;
-
-        brush.line(x1, y1, x2, y2);
+    switch(currentBrush) {
+        case 'pencil':
+            brush = new fabric.PencilBrush(canvas);
+            break;
+        case 'circle':
+            brush = new fabric.CircleBrush(canvas);
+            break;
+        case 'spray':
+            brush = new fabric.SprayBrush(canvas);
+            break;
+        default:
+            brush = new fabric.PencilBrush(canvas);
     }
+
+    // Set brush properties
+    brush.color = currentColor;
+    brush.width = currentSize;
+
+    // Apply to canvas
+    canvas.freeDrawingBrush = brush;
 }
 
-// Handle window resize
-function windowResized() {
-    const container = document.getElementById('canvas-container');
-    if (container) {
-        resizeCanvas(container.offsetWidth, container.offsetHeight);
-    }
-}
-
-// Setup control event listeners
 function setupControls() {
-    // Brush selection
+    // Brush type selection
     document.querySelectorAll('.brush-btn').forEach(btn => {
         btn.addEventListener('click', function() {
             const brushType = this.id.replace('brush-', '');
-            setBrush(brushType);
+            currentBrush = brushType;
+            updateBrush();
 
             // Update active state
             document.querySelectorAll('.brush-btn').forEach(b => b.classList.remove('active'));
@@ -70,16 +82,21 @@ function setupControls() {
     // Color selection
     document.querySelectorAll('.color-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            const color = this.getAttribute('data-color');
-            setColor(color);
+            currentColor = this.getAttribute('data-color');
+            updateBrush();
         });
     });
 
-    // Brush size
+    // Brush size slider
     const sizeSlider = document.getElementById('brush-size');
     if (sizeSlider) {
         sizeSlider.addEventListener('input', function() {
-            setBrushSize(this.value);
+            currentSize = parseInt(this.value);
+            const sizeDisplay = document.getElementById('size-display');
+            if (sizeDisplay) {
+                sizeDisplay.textContent = currentSize;
+            }
+            updateBrush();
         });
     }
 
@@ -87,48 +104,26 @@ function setupControls() {
     const clearBtn = document.getElementById('clear-btn');
     if (clearBtn) {
         clearBtn.addEventListener('click', function() {
-            background(255);
+            canvas.clear();
+            canvas.backgroundColor = '#ffffff';
+            canvas.renderAll();
         });
     }
 
     // Save button
     const saveBtn = document.getElementById('save-btn');
     if (saveBtn) {
-        saveBtn.addEventListener('click', saveDrawing);
+        saveBtn.addEventListener('click', function() {
+            // Convert canvas to data URL and trigger download
+            const dataURL = canvas.toDataURL({
+                format: 'png',
+                quality: 1
+            });
+
+            const link = document.createElement('a');
+            link.download = 'sketch-' + Date.now() + '.png';
+            link.href = dataURL;
+            link.click();
+        });
     }
 }
-
-// Brush control functions
-function setBrush(brushType) {
-    currentBrush = brushType;
-    brush.set(brushType, currentColor, currentSize);
-}
-
-function setColor(color) {
-    currentColor = color;
-    brush.set(currentBrush, color, currentSize);
-}
-
-function setBrushSize(size) {
-    // Convert size from 5-50 range to brush weight (0.5 to 3)
-    currentSize = map(parseInt(size), 5, 50, 0.5, 3);
-    const sizeDisplay = document.getElementById('size-display');
-    if (sizeDisplay) {
-        sizeDisplay.textContent = size;
-    }
-    brush.set(currentBrush, currentColor, currentSize);
-}
-
-function saveDrawing() {
-    // Save the canvas as PNG with timestamp
-    const filename = 'sketch-' + Date.now() + '.png';
-    saveCanvas(filename);
-}
-
-// Prevent scrolling when drawing on touch devices
-document.addEventListener('touchmove', function(e) {
-    const canvas = document.getElementById('drawing-canvas');
-    if (canvas && e.target === canvas) {
-        e.preventDefault();
-    }
-}, { passive: false });

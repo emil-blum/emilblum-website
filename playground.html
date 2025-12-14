@@ -29,14 +29,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- p5.js and p5.brush -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5.brush@1.1.4/dist/p5.brush.js"></script>
+    <!-- Fabric.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
 
     <style>
-        #drawing-canvas {
-            cursor: crosshair;
-        }
         .control-btn {
             transition: all 0.2s;
         }
@@ -46,6 +42,12 @@
         .control-btn.active {
             background-color: #171717 !important;
             color: white !important;
+        }
+        .canvas-container {
+            position: relative;
+        }
+        .canvas-container canvas {
+            border-radius: 0.5rem;
         }
     </style>
 </head>
@@ -115,17 +117,14 @@
                     <div class="flex-shrink-0">
                         <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Brush</label>
                         <div class="flex gap-2">
-                            <button id="brush-marker" class="control-btn brush-btn active px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
-                                Marker
+                            <button id="brush-pencil" class="control-btn brush-btn active px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
+                                Pencil
                             </button>
-                            <button id="brush-pen" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
-                                Pen
+                            <button id="brush-circle" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
+                                Circle
                             </button>
                             <button id="brush-spray" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
                                 Spray
-                            </button>
-                            <button id="brush-cpencil" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
-                                Pencil
                             </button>
                         </div>
                     </div>
@@ -182,8 +181,8 @@
         <!-- Canvas Container (Clean, 16:9) -->
         <section>
             <div class="w-full bg-white border border-neutral-200 rounded-lg overflow-hidden shadow-sm" style="aspect-ratio: 16/9;">
-                <div id="canvas-container" class="w-full h-full">
-                    <!-- p5.js canvas will be inserted here -->
+                <div id="canvas-container" class="w-full h-full flex items-center justify-center">
+                    <canvas id="drawing-canvas"></canvas>
                 </div>
             </div>
         </section>
