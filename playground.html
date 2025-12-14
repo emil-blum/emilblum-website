@@ -94,90 +94,98 @@
     <!-- Main Content -->
     <main class="pt-32 pb-20 px-4 md:px-12 max-w-7xl mx-auto">
 
-        <!-- Drawing Playground -->
-        <section class="relative min-h-[800px] border border-dashed border-neutral-300 rounded-lg bg-neutral-100/50 overflow-hidden">
-
-            <!-- Background Text -->
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
-                <span class="text-[15vw] font-bold tracking-tighter">DRAW</span>
+        <!-- Intro Section (Outside) -->
+        <section class="mb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                <h2 class="text-xs font-semibold tracking-widest uppercase text-neutral-500">Digital Canvas</h2>
             </div>
+            <h3 class="text-3xl font-medium tracking-tight mb-4 text-neutral-900">Sketch Something</h3>
+            <p class="text-neutral-600 mb-0 leading-relaxed max-w-2xl">
+                Play with brushes, experiment with colors, and create digital art. No rules, just expression.
+            </p>
+        </section>
 
-            <!-- Intro Content -->
-            <div class="absolute top-12 left-8 md:left-12 max-w-md z-10 pointer-events-none">
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                    <h2 class="text-xs font-semibold tracking-widest uppercase text-neutral-500">Digital Canvas</h2>
-                </div>
-                <h3 class="text-3xl font-medium tracking-tight mb-4 text-neutral-900">Sketch Something</h3>
-                <p class="text-neutral-600 mb-6 leading-relaxed">
-                    Play with brushes, experiment with colors, and create digital art. No rules, just expression.
-                </p>
-            </div>
+        <!-- Controls Toolbar (Outside, Horizontal) -->
+        <section class="mb-6">
+            <div class="bg-white border border-neutral-200 rounded-lg p-4 shadow-sm">
+                <div class="flex flex-col lg:flex-row gap-6 items-start lg:items-center">
 
-            <!-- Controls Panel -->
-            <div class="absolute top-12 right-8 md:right-12 z-20 bg-white/90 backdrop-blur-sm rounded-lg p-4 shadow-lg border border-neutral-200 max-w-xs">
-
-                <!-- Brush Type -->
-                <div class="mb-4">
-                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Brush</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="setBrush('marker')" class="control-btn brush-btn active px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
-                            Marker
-                        </button>
-                        <button onclick="setBrush('watercolor')" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
-                            Watercolor
-                        </button>
-                        <button onclick="setBrush('spray')" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
-                            Spray
-                        </button>
-                        <button onclick="setBrush('pen')" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-900">
-                            Pen
-                        </button>
+                    <!-- Brush Type Group -->
+                    <div class="flex-shrink-0">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Brush</label>
+                        <div class="flex gap-2">
+                            <button id="brush-marker" class="control-btn brush-btn active px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
+                                Marker
+                            </button>
+                            <button id="brush-watercolor" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
+                                Watercolor
+                            </button>
+                            <button id="brush-spray" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
+                                Spray
+                            </button>
+                            <button id="brush-pen" class="control-btn brush-btn px-3 py-2 text-xs rounded-md bg-neutral-100 hover:bg-neutral-900 hover:text-white text-neutral-900 transition-colors">
+                                Pen
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Color Palette -->
-                <div class="mb-4">
-                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Color</label>
-                    <div class="grid grid-cols-5 gap-2">
-                        <button onclick="setColor('#000000')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #000000;"></button>
-                        <button onclick="setColor('#EF4444')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EF4444;"></button>
-                        <button onclick="setColor('#3B82F6')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #3B82F6;"></button>
-                        <button onclick="setColor('#10B981')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #10B981;"></button>
-                        <button onclick="setColor('#F59E0B')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #F59E0B;"></button>
-                        <button onclick="setColor('#8B5CF6')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #8B5CF6;"></button>
-                        <button onclick="setColor('#EC4899')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EC4899;"></button>
-                        <button onclick="setColor('#14B8A6')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #14B8A6;"></button>
-                        <button onclick="setColor('#F97316')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #F97316;"></button>
-                        <button onclick="setColor('#6B7280')" class="w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #6B7280;"></button>
+                    <!-- Divider -->
+                    <div class="hidden lg:block w-px h-12 bg-neutral-200"></div>
+
+                    <!-- Color Palette Group -->
+                    <div class="flex-shrink-0">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Color</label>
+                        <div class="flex gap-2">
+                            <button data-color="#000000" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #000000;"></button>
+                            <button data-color="#EF4444" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EF4444;"></button>
+                            <button data-color="#3B82F6" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #3B82F6;"></button>
+                            <button data-color="#10B981" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #10B981;"></button>
+                            <button data-color="#F59E0B" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #F59E0B;"></button>
+                            <button data-color="#8B5CF6" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #8B5CF6;"></button>
+                            <button data-color="#EC4899" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #EC4899;"></button>
+                            <button data-color="#14B8A6" class="color-btn w-8 h-8 rounded-full border-2 border-neutral-300 hover:scale-110 transition-transform" style="background-color: #14B8A6;"></button>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Brush Size -->
-                <div class="mb-4">
-                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Size</label>
-                    <input type="range" id="brush-size" min="5" max="50" value="20" class="w-full" oninput="setBrushSize(this.value)">
-                    <div class="text-xs text-neutral-400 text-center mt-1"><span id="size-display">20</span>px</div>
-                </div>
+                    <!-- Divider -->
+                    <div class="hidden lg:block w-px h-12 bg-neutral-200"></div>
 
-                <!-- Actions -->
-                <div class="space-y-2">
-                    <button onclick="clearCanvas()" class="w-full control-btn px-4 py-2 text-xs rounded-md bg-neutral-900 hover:bg-neutral-800 text-white flex items-center justify-center gap-2">
-                        <iconify-icon icon="lucide:trash-2" width="14"></iconify-icon>
-                        Clear Canvas
-                    </button>
-                    <button onclick="saveCanvas()" class="w-full control-btn px-4 py-2 text-xs rounded-md border border-neutral-300 hover:bg-neutral-100 text-neutral-900 flex items-center justify-center gap-2">
-                        <iconify-icon icon="lucide:download" width="14"></iconify-icon>
-                        Save Image
-                    </button>
+                    <!-- Size Group -->
+                    <div class="flex-grow max-w-xs">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block">Size: <span id="size-display">20</span>px</label>
+                        <input type="range" id="brush-size" min="5" max="50" value="20" class="w-full">
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="hidden lg:block w-px h-12 bg-neutral-200"></div>
+
+                    <!-- Actions Group -->
+                    <div class="flex-shrink-0">
+                        <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-2 block opacity-0 pointer-events-none">Actions</label>
+                        <div class="flex gap-2">
+                            <button id="clear-btn" class="control-btn px-4 py-2 text-xs rounded-md bg-neutral-900 hover:bg-neutral-800 text-white flex items-center gap-2 transition-colors">
+                                <iconify-icon icon="lucide:trash-2" width="14"></iconify-icon>
+                                Clear
+                            </button>
+                            <button id="save-btn" class="control-btn px-4 py-2 text-xs rounded-md border border-neutral-300 hover:bg-neutral-100 text-neutral-900 flex items-center gap-2 transition-colors">
+                                <iconify-icon icon="lucide:download" width="14"></iconify-icon>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </section>
 
-            <!-- Canvas Container -->
-            <div id="canvas-container" class="absolute inset-0 flex items-center justify-center">
-                <!-- p5.js canvas will be inserted here -->
+        <!-- Canvas Container (Clean, 16:9) -->
+        <section>
+            <div class="w-full bg-white border border-neutral-200 rounded-lg overflow-hidden shadow-sm" style="aspect-ratio: 16/9;">
+                <div id="canvas-container" class="w-full h-full">
+                    <!-- p5.js canvas will be inserted here -->
+                </div>
             </div>
-
         </section>
 
     </main>

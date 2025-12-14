@@ -197,27 +197,23 @@
         </section>
 
         <!-- Draggable / Work in Progress -->
+        <!-- Intro Section (Outside) -->
+        <section class="mb-8">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
+                <h2 class="text-xs font-semibold tracking-widest uppercase text-neutral-500">In Progress</h2>
+            </div>
+            <h3 class="text-3xl font-medium tracking-tight mb-4 text-neutral-900">The Messy Desk</h3>
+            <p class="text-neutral-600 mb-6 leading-relaxed max-w-2xl">
+                Not everything is polished. Here lies the graveyard of ideas, current sketches, and unfinished experiments.
+            </p>
+            <a href="archive.html" class="bg-neutral-900 text-white px-5 py-2.5 rounded-md text-xs font-medium hover:bg-neutral-800 transition-colors inline-flex items-center gap-2 w-max">
+                Explore Archive <iconify-icon icon="lucide:arrow-up-right" width="14"></iconify-icon>
+            </a>
+        </section>
+
+        <!-- Draggable Container (Clean) -->
         <section class="relative min-h-[700px] mb-32 border border-dashed border-neutral-300 rounded-lg bg-neutral-100/50 overflow-hidden reveal-up">
-            <!-- Background Text -->
-            <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-5">
-                <span class="text-[10vw] font-bold tracking-tighter uppercase text-center leading-none">Behind<br>Scenes</span>
-            </div>
-
-            <!-- Intro Content -->
-            <div class="absolute top-12 left-8 md:left-12 max-w-sm z-10 pointer-events-none">
-                <div class="flex items-center gap-4 mb-4">
-                    <span class="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
-                    <h2 class="text-xs font-semibold tracking-widest uppercase text-neutral-500">In Progress</h2>
-                </div>
-                <h3 class="text-2xl font-medium tracking-tight mb-3 text-neutral-900">The Messy Desk</h3>
-                <p class="text-neutral-600 mb-6 text-sm leading-relaxed">
-                    Not everything is polished. Here lies the graveyard of ideas, current sketches, and unfinished experiments.
-                </p>
-                <a href="archive.html" class="pointer-events-auto bg-neutral-900 text-white px-5 py-2.5 rounded-md text-xs font-medium hover:bg-neutral-800 transition-colors inline-flex items-center gap-2 w-max">
-                    Explore Archive <iconify-icon icon="lucide:arrow-up-right" width="14"></iconify-icon>
-                </a>
-            </div>
-
             <!-- The Draggable Pile (loaded dynamically from data/about-draggables.json) -->
             <div id="about-draggables" class="absolute inset-0 w-full h-full overflow-hidden">
                 <!-- Draggable items will be loaded here by JavaScript -->

@@ -23,6 +23,9 @@ function setup() {
     brush.load();
     brush.set(currentBrush, currentColor, 1);
     brush.scaleBrushes(currentSize / 20); // Default size is 20
+
+    // Setup event listeners after p5 setup
+    setupControls();
 }
 
 function draw() {
@@ -40,16 +43,54 @@ function windowResized() {
     }
 }
 
+// Setup control event listeners
+function setupControls() {
+    // Brush selection
+    document.querySelectorAll('.brush-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const brushType = this.id.replace('brush-', '');
+            setBrush(brushType);
+
+            // Update active state
+            document.querySelectorAll('.brush-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Color selection
+    document.querySelectorAll('.color-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const color = this.getAttribute('data-color');
+            setColor(color);
+        });
+    });
+
+    // Brush size
+    const sizeSlider = document.getElementById('brush-size');
+    if (sizeSlider) {
+        sizeSlider.addEventListener('input', function() {
+            setBrushSize(this.value);
+        });
+    }
+
+    // Clear button
+    const clearBtn = document.getElementById('clear-btn');
+    if (clearBtn) {
+        clearBtn.addEventListener('click', clearCanvas);
+    }
+
+    // Save button
+    const saveBtn = document.getElementById('save-btn');
+    if (saveBtn) {
+        saveBtn.addEventListener('click', saveDrawing);
+    }
+}
+
 // Brush control functions
 function setBrush(brushType) {
     currentBrush = brushType;
     brush.set(brushType, currentColor, 1);
-
-    // Update active button
-    document.querySelectorAll('.brush-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.classList.add('active');
+    brush.scaleBrushes(currentSize / 20);
 }
 
 function setColor(color) {
@@ -59,7 +100,10 @@ function setColor(color) {
 
 function setBrushSize(size) {
     currentSize = parseInt(size);
-    document.getElementById('size-display').textContent = currentSize;
+    const sizeDisplay = document.getElementById('size-display');
+    if (sizeDisplay) {
+        sizeDisplay.textContent = currentSize;
+    }
     brush.scaleBrushes(currentSize / 20); // Scale relative to default size
 }
 
@@ -67,15 +111,16 @@ function clearCanvas() {
     background(255);
 }
 
-function saveCanvas() {
-    // Save the canvas as PNG
+function saveDrawing() {
+    // Save the canvas as PNG with timestamp
     const filename = 'sketch-' + Date.now() + '.png';
     saveCanvas(filename);
 }
 
 // Prevent scrolling when drawing on touch devices
 document.addEventListener('touchmove', function(e) {
-    if (e.target.id === 'drawing-canvas') {
+    const canvas = document.getElementById('drawing-canvas');
+    if (canvas && e.target === canvas) {
         e.preventDefault();
     }
 }, { passive: false });
