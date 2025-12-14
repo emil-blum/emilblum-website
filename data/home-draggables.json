@@ -1,29 +1,44 @@
 {
   "items": [
     {
-      "image": "images/home/drag-1.jpg",
-      "alt": "Experimental work 1",
+      "image": "images/home/01_eb-home-archive-friendapp.webp",
+      "alt": "Friend App Design",
       "width": "280px"
     },
     {
-      "image": "images/home/drag-2.jpg",
-      "alt": "Experimental work 2",
-      "width": "240px"
+      "image": "images/home/02_eb-home-archive-kombucha.webp",
+      "alt": "Kombucha Branding",
+      "width": "320px"
     },
     {
-      "image": "images/home/drag-3.jpg",
-      "alt": "Experimental work 3",
+      "image": "images/home/03_eb-home-archive-RType.webp",
+      "alt": "Typography Exploration",
       "width": "260px"
     },
     {
-      "image": "images/home/drag-4.jpg",
-      "alt": "Experimental work 4",
+      "image": "images/home/04_eb-home-archive-africanwoman.webp",
+      "alt": "Editorial Design",
+      "width": "240px"
+    },
+    {
+      "image": "images/home/05_eb-home-archive-AAguitars.webp",
+      "alt": "Guitar Branding",
+      "width": "300px"
+    },
+    {
+      "image": "images/home/06_eb-home-archive-Mindful-illustrations.webp",
+      "alt": "Mindful Illustrations",
       "width": "220px"
     },
     {
-      "image": "images/home/drag-5.jpg",
-      "alt": "Experimental work 5",
-      "width": "300px"
+      "image": "images/home/07_eb-home-archive-GType.webp",
+      "alt": "Type Design",
+      "width": "270px"
+    },
+    {
+      "image": "images/home/08_eb-home-archive-FTLOTGTitles.webp",
+      "alt": "Title Design",
+      "width": "290px"
     }
   ]
 }
