@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Emīl Blūm</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Send a message and we'll figure out how to find you the value you're looking for.">
+    <meta name="keywords" content="contact, get in touch, hire designer, Emīl Blūm">
+    <meta name="author" content="Emīl Blūm">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://emilblum.com/contact.html">
+    <meta property="og:title" content="Contact Emīl Blūm">
+    <meta property="og:description" content="Send a message and we'll figure out how to find you the value you're looking for.">
+    <meta property="og:image" content="https://emilblum.com/images/social-preview.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://emilblum.com/contact.html">
+    <meta name="twitter:title" content="Contact Emīl Blūm">
+    <meta name="twitter:description" content="Send a message and we'll figure out how to find you the value you're looking for.">
+    <meta name="twitter:image" content="https://emilblum.com/images/social-preview.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Contact page specific: white background */
+        body {
+            background-color: #ffffff;
+            color: #171717;
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="selection:bg-black selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 px-6 py-6 flex justify-between items-center bg-white/80 backdrop-blur-md border-b border-neutral-100">
+        <a href="index.html" class="flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-black transition-colors">
+            <iconify-icon icon="lucide:arrow-left" width="18" stroke-width="1.5"></iconify-icon>
+            <span>Back</span>
+        </a>
+        <div class="text-sm font-semibold tracking-tight uppercase">Contact</div>
+        <div class="w-8"></div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 px-6 md:px-12 max-w-5xl mx-auto">
+
+        <!-- Header Section -->
+        <header class="mb-16 fade-in-up">
+            <h1 class="text-5xl md:text-7xl font-semibold tracking-tight mb-8 text-neutral-900">
+                Let's start a project.
+            </h1>
+            <p class="text-xl md:text-2xl text-neutral-500 font-light leading-relaxed max-w-3xl mb-6">
+                We help ambitious brands define their story and build digital products that people love to use.
+            </p>
+            <p class="text-base text-neutral-400 max-w-2xl leading-relaxed">
+                Please fill out the form below with as much detail as possible. We carefully review every inquiry and aim to reply within 48 hours to schedule a discovery call.
+            </p>
+        </header>
+
+        <!-- Form Section -->
+        <form id="contactForm" class="fade-in-up" style="animation-delay: 0.1s;" onsubmit="handleFormSubmit(event)">
+            <div class="space-y-12">
+
+                <!-- Personal Info Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="firstname" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">First Name</label>
+                        <input type="text" id="firstname" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Jane">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="lastname" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Last Name</label>
+                        <input type="text" id="lastname" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Doe">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="email" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Email Address</label>
+                        <input type="email" id="email" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="jane@company.com">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="company" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Company</label>
+                        <input type="text" id="company" class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="Acme Inc.">
+                    </div>
+                </div>
+
+                <!-- Services (Multi-Select) -->
+                <div class="space-y-4">
+                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500">How can I help you?</label>
+                    <div class="flex flex-wrap gap-3" id="services-options">
+                        <button type="button" class="toggle-btn multi-select px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleMulti(this)">Brand Identity Design</button>
+                        <button type="button" class="toggle-btn multi-select px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleMulti(this)">Ongoing Graphic Design</button>
+                        <button type="button" class="toggle-btn multi-select px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleMulti(this)">Print / Exhibition Design</button>
+                        <button type="button" class="toggle-btn multi-select px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleMulti(this)">Website Design</button>
+                        <button type="button" class="toggle-btn multi-select px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleMulti(this)">Other / I'm not sure</button>
+                    </div>
+                </div>
+
+                <!-- Project Details -->
+                <div class="space-y-2">
+                    <label for="details" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Tell me about your project</label>
+                    <textarea id="details" rows="5" required class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400 resize-none" placeholder="Briefly describe the goals, timeline, and scope..."></textarea>
+                </div>
+
+                <!-- Budget (Single Select) -->
+                <div class="space-y-4">
+                    <label class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Do you already have a budget in mind?</label>
+                    <div class="flex flex-wrap gap-3" id="budget-options">
+                        <button type="button" class="toggle-btn budget-opt px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleSingle(this, 'budget-opt')">I don't</button>
+                        <button type="button" class="toggle-btn budget-opt px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleSingle(this, 'budget-opt')">$5k — 10k</button>
+                        <button type="button" class="toggle-btn budget-opt px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleSingle(this, 'budget-opt')">$10k — 15k</button>
+                        <button type="button" class="toggle-btn budget-opt px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleSingle(this, 'budget-opt')">$15k — 20k</button>
+                        <button type="button" class="toggle-btn budget-opt px-4 py-2 rounded-full border border-neutral-200 text-sm text-neutral-600 hover:border-neutral-400 bg-white" onclick="toggleSingle(this, 'budget-opt')">$20k+</button>
+                    </div>
+                </div>
+
+                <!-- Referral -->
+                <div class="space-y-2">
+                    <label for="referral" class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Where did you hear about me?</label>
+                    <input type="text" id="referral" class="input-field w-full bg-neutral-50 border border-neutral-200 rounded-md px-4 py-3 text-sm text-neutral-900 placeholder:text-neutral-400" placeholder="e.g. Awwwards, Twitter, Referral...">
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-6">
+                    <button type="submit" class="group relative inline-flex items-center gap-3 bg-neutral-900 text-white px-8 py-4 rounded-md text-sm font-medium hover:bg-neutral-800 transition-all duration-200 w-full md:w-auto justify-center">
+                        <span>Start a conversation</span>
+                        <iconify-icon icon="lucide:arrow-right" width="16" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- Success Overlay -->
+    <div id="successOverlay" class="overlay fixed inset-0 z-50 bg-white flex flex-col items-center justify-center p-6 text-center">
+        <div class="overlay-content max-w-lg">
+            <div class="w-16 h-16 bg-neutral-50 rounded-full flex items-center justify-center mx-auto mb-8 text-neutral-900">
+                <iconify-icon icon="lucide:check" width="32" stroke-width="1.5"></iconify-icon>
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-neutral-900 mb-4">
+                Thank you, your message is in my inbox.
+            </h2>
+            <h3 class="text-lg text-neutral-500 mb-12 font-light">
+                I will get back to you within two business days.
+            </h3>
+
+            <a href="index.html" class="inline-flex items-center gap-2 text-sm font-medium border border-neutral-200 px-6 py-3 rounded-md hover:bg-neutral-50 hover:border-neutral-300 transition-colors">
+                <iconify-icon icon="lucide:home" width="16"></iconify-icon>
+                <span>Back to home page</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
